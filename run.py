@@ -73,28 +73,6 @@ def main(args):
         print("runner_args",runner_args)
         run_flag = run(env,agent,runner_args)
         print("run_flag",run_flag)
-
-    if args.alg == "SIA2C":
-
-        from SIA2C.sia2c_process_args import sia2c_env_args
-        #from A2C.vec_env_builder import build_vec_env
-        from EnvBuilder.vec_env_builder import build_vec_env
-        env_args = sia2c_env_args(args)
-        print("sia2c env parser",env_args)
-        env=build_vec_env(env_args)
-        print("env",env)
-        
-        from SIA2C.sia2c_process_args import sia2c_agent_args
-        from SIA2C.SIA2CAgent import SIA2CAgent
-        agent_args = sia2c_agent_args(env,args)
-        agent = SIA2CAgent(env,agent_args) 
-                  
-        from SIA2C.sia2c_process_args import sia2c_runner_args
-        from SIA2C.runner4sia2c import run
-        runner_args = sia2c_runner_args(env,args)
-        print("runner_args",runner_args)
-        run_flag = run(env,agent,runner_args)
-        print("run_flag",run_flag)
     
 
         
@@ -165,22 +143,7 @@ def main(args):
         from RND.runner4rnd import run
         run_flag = run(env,agent,runner_args)
         
-    if args.alg == "UB1":
-        from UB1.ub1_process_args import ub1_env_args
-        from EnvBuilder.vec_env_builder import build_vec_env
-        env_args = ub1_env_args(args)
-        env=build_vec_env(env_args)
-        print(env_args)
-        
-        from UB1.ub1_process_args import ub1_agent_args
-        agent_args = ub1_agent_args(env,args)
-        from UB1.UB1Agent import UB1Agent
-        agent = UB1Agent(env,agent_args)
-        
-        from UB1.ub1_process_args import ub1_runner_args
-        runner_args = ub1_runner_args(env,args)
-        from UB1.runner4ub1 import run
-        run_flag = run(env,agent,runner_args)
+    
         
     if args.alg =="ICM":
         from ICM.icm_process_args import icm_env_args
@@ -246,100 +209,7 @@ def main(args):
         from HASHCOUNT.runner4hashcount import run
         run_flag = run(env,agent,runner_args)
 
-    if args.alg == "MFEC":
-        from DQN.process_args import deepq_env_args
-        from EnvBuilder.env_builder import build_env
-        env_args = deepq_env_args(args)
-        print("MFEC env ",env_args)
-        env=build_env(env_args)
-
-        from MFEC.process_args import mfec_agent_args
-        from MFEC.MFECAgent import MFECAgent
-        agent_args=mfec_agent_args(env,args)
-        print("agent",agent_args)
-        agent = MFECAgent(agent_args)
-
-        from MFEC.process_args import mfec_runner_args
-        from MFEC.runner4mfec import run
-        runner_args = mfec_runner_args(env,args)
-        print(runner_args)
-        run_flag = run(env,agent,runner_args)
-
-    if args.alg == "EMDQN":
-        from DQN.process_args import deepq_env_args
-        from EnvBuilder.env_builder import build_env
-        env_args = deepq_env_args(args)
-        print("EMDQN env ",env_args)
-        env=build_env(env_args)
-
-        from EMDQN.process_args import emdqn_agent_args
-        from EMDQN.EMDQNAgent import EMDQNAgent
-        agent_args=emdqn_agent_args(env,args)
-        print("agent",agent_args)
-        agent = EMDQNAgent(agent_args)        
-
-        from EMDQN.process_args import emdqn_runner_args
-        from EMDQN.runner4emdqn import run
-        runner_args = emdqn_runner_args(env,args)
-        print(runner_args)
-        run_flag = run(env,agent,runner_args)
-
-    if args.alg =="NEC":
-        from DQN.process_args import deepq_env_args
-        from EnvBuilder.env_builder import build_env
-        env_args = deepq_env_args(args)
-        print("NEC env ",env_args)
-        env=build_env(env_args)
-
-        from NEC.process_args import nec_agent_args
-        from NEC.NECAgent import NECAgent
-        agent_args = nec_agent_args(env,args)
-        agent = NECAgent(env,agent_args)
-
-
-        from NEC.process_args import nec_runner_args
-        from NEC.runner4nec import run
-        runner_args = nec_runner_args(env,args)
-        run_flag = run(env,agent,runner_args)
-        # print(runner_args)
-
-    if args.alg == "GBRL":
-        from DQN.process_args import deepq_env_args
-        from EnvBuilder.env_builder import build_env
-        env_args = deepq_env_args(args)
-        print("GBRL env ",env_args)
-        env=build_env(env_args)
-
-        from GBRL.process_args import gbrl_agent_args
-        from GBRL.GBRLAgent import GBRLAgent
-        agent_args = gbrl_agent_args(env,args)
-        print("gbrl agent",agent_args)
-        agent = GBRLAgent(env,args)
-
-        from GBRL.process_args import gbrl_runner_args
-        from GBRL.runner4gbrl import run
-        runner_args = gbrl_runner_args(env,args)
-        print("gbrl run",runner_args)
-        run_flag = run(env,agent,runner_args)
-
-    if args.alg == "GBMR":
-        from DQN.process_args import deepq_env_args
-        from EnvBuilder.env_builder import build_env
-        env_args = deepq_env_args(args)
-        print("GBRL env ",env_args)
-        env=build_env(env_args)
-
-        from GBMR.process_args import gbmr_agent_args
-        from GBMR.GBMRAgent import GBMRAgent
-        agent_args = gbmr_agent_args(env,args)
-        print("gbmr agent",agent_args)
-        agent = GBMRAgent(env,args)
-
-        from GBMR.process_args import gbmr_runner_args
-        from GBMR.runner4gbmr import run
-        runner_args = gbmr_runner_args(env,args)
-        print("gbmr run",runner_args)
-        run_flag = run(env,agent,runner_args)
+    
         
 if __name__ == '__main__':
     print("hello world")
